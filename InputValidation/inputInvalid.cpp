@@ -3,6 +3,14 @@
 
 bool inputInvalid()
 {
+	// For inputs that fails in extraction
+	if (inputFailedExtraction()) {
+		clearAndIgnoreLine();
+		// Error handling
+		std::cout << "ERROR! INVALID INPUT\n";
+		return true;
+	}
+
 	// For extraneous inputs
 	if (extraneousInput()) {
 		clearAndIgnoreLine();
@@ -11,12 +19,5 @@ bool inputInvalid()
 		return true;
 	}
 
-	// For inputs that fails in extraction
-	if (inputFailedExtraction()) {
-		clearAndIgnoreLine();
-		// Error handling
-		std::cout << "ERROR! INVALID INPUT\n";
-		return true;
-	}
 	return false;
 }
