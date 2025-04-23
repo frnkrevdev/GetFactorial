@@ -1,5 +1,6 @@
 #include "../InputValidation/InputValidation.h"		// Library for unexpected console inputs
 #include <boost/multiprecision/cpp_int.hpp>			// Library for big integer numbers, also alternative gmp.h for C language
+#include <cctype>
 #include <iostream>
 #include <string>
 
@@ -33,9 +34,9 @@ cpp_int getNumber()
 }
 
 // This function calculates the factorial of the number then converts into string and prints it
-void getFactorial(cpp_int num)
+void printFactorial(cpp_int num)
 {
-	cpp_int result{ num };		// Initialized using the user's input since it will be the starting value for factorial computation
+	cpp_int result = (num == 0) ? 1 : num;
 
 	// Calculating the factorial of the number that the user entered
 	for (cpp_int i{ num - 1 }; i > 0; --i) {
@@ -75,7 +76,7 @@ bool repeat()
 		}
 
 		// Executes when user entered valid type input
-		switch (again) {
+		switch (std::tolower(again)) {
 		case 'y':		return true;		// Exits the loop and the user is satisfied to repeat
 		case 'n':		return false;		// Exits the loop and the user is no longer satisfied to repeat
 		default:
@@ -93,7 +94,7 @@ int main()
 	while (true)
 	{
 		// The program begins here
-		getFactorial(getNumber());
+		printFactorial(getNumber());
 		
 		// If the user is satisfied to repeat, repeat the program
 		if (repeat()) {
@@ -102,9 +103,6 @@ int main()
 		// Or else exit the program
 		break;
 	}
-
-	// My message for those who used this program :)
-	std::cout << "Thank you for using this program. Hehe :)\n";
 
 	return 0;
 }
