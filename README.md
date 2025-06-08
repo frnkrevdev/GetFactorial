@@ -1,3 +1,3 @@
 # GetFactorial
 
-## There is nothing to see here yet. Go away.
+Version 1.0 - Basic hehe.
